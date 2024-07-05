@@ -27,6 +27,7 @@ Please note that v0.2.0 was called "Cautious Gamemaster's Pack 2", but since own
 * **Allow players to see typing notification**: when typing notification is enabled, this settings allows players to see the notifications.  If disabled, only the GM can see the typing notifications.
 * **Hide scrolling damage text on NPC tokens**: Hides the scrolling text above a token when it takes damage.
 * **Hide scrolling healing text on NPC tokens**: Hides the scrolling text above a token when it receives healing.
+* **Disable flashing of Dynamic Token Rings**: Disables the Dynamic Token Ring flashing, e.g. when a token is damaged or healed.  Note this option only appears if you are using dnd5e v3.1, or Foundry v12.
 
 ## Additional Chat Commands
 

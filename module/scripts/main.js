@@ -14,6 +14,7 @@
 import { CGMPSettings, CGMP_OPTIONS } from "./settings.js";
 import { ChatResolver } from "./chat-resolver.js";
 import { TypingNotifierManager } from "./typing-notifier.js";
+import { Util } from "./util.js"
 
 class CautiousGamemastersPack {
 
@@ -52,6 +53,14 @@ class CautiousGamemastersPack {
 
 				libWrapper.register('CautiousGamemastersPack', 'InterfaceCanvasGroup.prototype.createScrollingText',
 					CautiousGamemastersPack._onScrollingText, "MIXED");
+			}
+
+			if (Util.isV12() || CONFIG.Token.ringClass) {
+				const disableDynamicTokenRingFlash = CGMPSettings.getSetting(CGMP_OPTIONS.DISABLE_DYNAMIC_TOKEN_RING_FLASH);
+				if (game.modules.get('lib-wrapper')?.active && disableDynamicTokenRingFlash) {
+					const ringClass = Util.isV12() ? "foundry.canvas.tokens.TokenRing" : "CONFIG.Token.ringClass";
+					libWrapper.register('CautiousGamemastersPack', `${ringClass}.prototype.flashColor`, ()=>{}, "OVERRIDE");
+				}
 			}
 		});
 

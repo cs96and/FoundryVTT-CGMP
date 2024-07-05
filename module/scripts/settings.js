@@ -11,12 +11,15 @@
  * https://mit-license.org/
  */
 
+import { Util } from "./util.js"
+
 export const CGMP_OPTIONS = {
 	ALLOW_PLAYERS_TO_USE_DESC: "allowPlayersToUseDesc",
 	BLIND_HIDDEN_TOKENS: "blindHiddenTokens",
 	GM_SPEAKER_MODE: "gmSpeakerMode",
 	HIDE_NPC_DAMAGE_TEXT: "hideNpcDamageText",
 	HIDE_NPC_HEALING_TEXT: "hideNpcHealingText",
+	DISABLE_DYNAMIC_TOKEN_RING_FLASH: "disableDynamicTokenRingFlash",
 	NOTIFY_TYPING: "notifyTyping",
 	ALLOW_PLAYERS_TO_SEE_TYPING_NOTIFICATION: "allowPlayersToSeeTypingNotification",
 	PLAYER_SPEAKER_MODE: "playerSpeakerMode"
@@ -144,6 +147,17 @@ export class CGMPSettings {
 			type: Boolean,
 			requiresReload: true
 		});
+
+		if (Util.isV12() || CONFIG.Token.ringClass) {
+			game.settings.register("CautiousGamemastersPack", CGMP_OPTIONS.DISABLE_DYNAMIC_TOKEN_RING_FLASH, {
+				name: "cgmp.disable-dynamic-token-ring-flash-s",
+				scope: "world",
+				config: true,
+				default: false,
+				type: Boolean,
+				requiresReload: true
+			});
+		}
 	}
 
 	static convertGmSpeakerModeLegacySetting() {

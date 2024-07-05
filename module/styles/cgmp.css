@@ -38,13 +38,6 @@
 	margin-left: auto;			
 }
 
-/* Styling for emotes */
-#chat-log .message.emote .message-content {
-	text-align: center;
-	color: #323232;
-	font-style: italic;
-}
-
 /* Make the chat-form (parent of the text box) flex, so we can pop the typing notification in and out */
 #chat-form {
 	display: inline-flex;

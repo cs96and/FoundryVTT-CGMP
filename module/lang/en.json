@@ -18,7 +18,7 @@
 	"cgmp.typing-one": "{user} is typing...", 
 	"cgmp.typing-two": "{user1} and {user2} are typing...",
 	"cgmp.typing-many": "{user1}, {user2} and {others} other players are typing...",
-	"cgmp.hide-npc-damage-text-s": "Hide scrolling damage text on NPC tokens",
-	"cgmp.hide-npc-healing-text-s": "Hide scrolling healing text on NPC token",
+	"cgmp.hide-npc-damage-text-s": "Hide scrolling damage text on NPC tokens from players",
+	"cgmp.hide-npc-healing-text-s": "Hide scrolling healing text on NPC token from players",
 	"cgmp.disable-dynamic-token-ring-flash-s": "Disable flashing of Dynamic Token Rings"
 }

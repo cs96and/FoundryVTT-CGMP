@@ -15,9 +15,10 @@
 	"cgmp.typing-one": "{user} pisze...",
 	"cgmp.typing-two": "{user1} i {user2} piszą...",
 	"cgmp.typing-many": "{user1}, {user2} i {other} gracze piszą...",
-	"cgmp.hide-npc-damage-text-s": "Ukrycie przewijania tekstu obrażeń na tokenach NPC",
-	"cgmp.hide-npc-healing-text-s": "Ukryj tekst przewijania leczenia dla tokena NPC",
+	"cgmp.hide-npc-damage-text-s": "Ukryj przed graczami przewijany tekst obrażeń na tokenach NPC",
+	"cgmp.hide-npc-healing-text-s": "Ukryj przed graczami przewijany tekst leczenia na tokenach NPC",
 	"cgmp.gm-speaker-mode-l": "\"Domyślny\": mówcy nie są zmieniani.  \"Wyłącz mówienie GM jako Gracz\": Zmienia wszystkie rozmowy prowadzone przez GM jako Gracz w rozmowy poza postacią, z wyjątkiem rzutów.  \" Wymuś jako postać\": Wiadomości na czacie będą pochodzić od przypisanej postaci, niezależnie od tego, czy token znajduje się w scenie lub czy określono czat.  \"Zawsze poza postacią\": Sprawia, że wszystkie wiadomości wychodzą spoza postaci.  \" Użyj przypisanego, gdy mówi jako postać\": To samo co \"Wymuś jako postać\", ale pozostawia wiadomości poza postacią.",
 	"cgmp.blind-hidden-tokens-l": "Wszystkie rzuty wykonane przez ukryte tokeny są rzucane w ciemno, tylko GM może je zobaczyć (rozmowy są przekształcane w widoczne rozmowy poza postacią)",
-	"cgmp.notify-typing-l": "Powiadamiaj, gdy inni gracze piszą wiadomości na czacie"
+	"cgmp.notify-typing-l": "Powiadamiaj, gdy inni gracze piszą wiadomości na czacie",
+	"cgmp.disable-dynamic-token-ring-flash-s": "Wyłączenie migania dynamicznych pierścieni tokenów"
 }

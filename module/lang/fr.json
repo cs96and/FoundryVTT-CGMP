@@ -15,9 +15,10 @@
 	"cgmp.notify-typing-s": "Notifier l'écriture d'un message",
 	"cgmp.typing-two": "{user1} et {user2} sont en train d'écrire...",
 	"cgmp.typing-many": "{user1}, {user2} et d'autres joueur sont en train d'écrire...",
-	"cgmp.hide-npc-damage-text-s": "Cacher le texte défilant des dégâts sur les jetons des PNJ",
-	"cgmp.hide-npc-healing-text-s": "Cacher le texte des soins défilant sur le jeton des PNJ",
+	"cgmp.hide-npc-damage-text-s": "Cacher le texte défilant des dégâts sur les jetons des PNJ aux joueurs",
+	"cgmp.hide-npc-healing-text-s": "Cacher le texte des soins défilant sur le jeton des PNJ aux joueurs",
 	"cgmp.gm-speaker-mode-s": "Mode GM orateur",
 	"cgmp.gm-speaker-mode-l": "\"Défaut\" : les orateurs ne sont pas modifiés. \"Désactiver le MJ parlant en tant que PJ\" : Toutes les discussions que le MJ prononce en tant que PJ sont des discussions hrp, à l'exception des jets. \"Forcer le personnage\" : Les messages de la conversation viendront du personnage assigné, que ce jeton soit dans la scène ou si conversation/ooc soit précisé. \"Toujours hors du personnage\" : Tous les messages sont hors du personnage.\"Utiliser assigné si dans le personnage\":Identique à\"Forcer dans le personnage\",mais laisse seuls les messages du personnage.",
-	"cgmp.speaker-mode.in-character-always-assigned-s": "Utilisation assignée quand dans le personnage"
+	"cgmp.speaker-mode.in-character-always-assigned-s": "Utilisation assignée quand dans le personnage",
+	"cgmp.disable-dynamic-token-ring-flash-s": "Désactiver le clignotement des anneaux des Jeton Dynamiques"
 }

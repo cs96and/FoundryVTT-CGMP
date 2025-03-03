@@ -1,7 +1,5 @@
 {
 	"id": "CautiousGamemastersPack",
-	"name": "CautiousGamemastersPack",
-	"type": "module",
 	"title": "Cautious Gamemaster's Pack",
 	"description": "Offers various simple handy options.",
 	"version": "#{VERSION}#",

@@ -12,34 +12,41 @@
  */
 
 /* Styling for /desc messages */
-#chat-log .message.cgmp-desc {
+:is(#chat-log, .chat-log) .message.cgmp-desc
+{
 	background: #ececec;
 	border-color: gray !important;
 }
-#chat-log .message.cgmp-desc .message-content {
+
+:is(#chat-log, .chat-log) .message.cgmp-desc .message-content
+{
 	text-align: center;
-	color: gray;
+	color: #353535;
 	font-style: italic;
 }
 
 /* Hide chat portrait for /as and /desc messages */
-#chat-log :is(.message.cgmp-as, .message.cgmp-desc) .message-header :is(.message-portrait, .avatar)
+:is(#chat-log, .chat-log) :is(.message.cgmp-as, .message.cgmp-desc) .message-header :is(.message-portrait, .avatar)
 {
 	display: none !important;
 }
 
 /* Hide sender for /desc messages */
-#chat-log .message.cgmp-desc .message-header .message-sender {
+:is(#chat-log, .chat-log) .message.cgmp-desc .message-header .message-sender
+{
 	display: none !important;
 }
 
 /* Ensure metatdata is right aligned when both chat portrait and sender are hidden. */
-#chat-log .message.cgmp-desc .message-header .message-metadata {
+:is(#chat-log, .chat-log) .message.cgmp-desc .message-header .message-metadata
+{
 	margin-left: auto;			
 }
 
 /* Make the chat-form (parent of the text box) flex, so we can pop the typing notification in and out */
-#chat-form {
+#chat-form,
+.chat-form
+{
 	display: inline-flex;
 	flex-direction: column;
 	justify-content: flex-end;

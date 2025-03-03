@@ -11,6 +11,8 @@
  * https://mit-license.org/
  */
 
+import { Util } from "./util.js"
+
 const PACKET_HEADER = {
 	OTHER: 0,
 	TYPING_MESSAGE: 1,
@@ -42,10 +44,14 @@ export class TypingNotifier {
 		if (game.modules.get("mobile-improvements")?.active && !chatLogApp._original)
 			libWrapper.register('CautiousGamemastersPack', 'ChatLog.prototype._onChatKeyDown', this._onChatKeyDownWrapper.bind(this), 'WRAPPER');
 
-		const chatFormElement = chatLogElement.querySelector("#chat-form");
+		const chatFormElement = chatLogElement.querySelector(Util.isV13() ? ".chat-form" : "#chat-form");
 		chatFormElement.appendChild(this._notifyWrapperElement);
 
-		this._chatBox = chatLogElement.querySelector("#chat-message");
+		if (Util.isV13()) {
+			this._chatBox = document.querySelector("#chat-message");
+		} else {
+			this._chatBox = chatLogElement.querySelector("#chat-message");
+		}
 
 		this._chatBox.addEventListener("keydown", this._onChatKeyDown.bind(this));
 
@@ -224,14 +230,12 @@ export class TypingNotifier {
 export class TypingNotifierManager {
 	constructor(allowPlayersToSeeTypingNotification) {
 		this._allowPlayersToSeeTypingNotification = allowPlayersToSeeTypingNotification;
-		this._notifiers = new Map();
+		this._notifiers = [];
 
 		Hooks.on('renderChatLog', (chatLog, html, data) => {
-			this._notifiers[html[0]] = new TypingNotifier(chatLog, html[0], this._allowPlayersToSeeTypingNotification);
-		});
-
-		Hooks.on('closeChatLog', (chatLog, html, data) => {
-			delete this._notifiers[html[0]];
+			const element = Util.isV13() ? html : html[0];
+			this._notifiers.push(new TypingNotifier(chatLog, element, this._allowPlayersToSeeTypingNotification));
+			console.log(this._notifiers);
 		});
 
 		game.socket.on('module.CautiousGamemastersPack', this._onRemotePacket.bind(this));

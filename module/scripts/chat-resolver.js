@@ -115,7 +115,9 @@ export class ChatResolver {
 		// Iterate over patterns, finding the first match
 		for ( let [command, rgx] of Object.entries(ChatResolver.PATTERNS) ) {
 			const match = message.match(rgx); 
-			if (match) return [command, match];
+			if (match) {
+				return [command, match];
+			}
 		}
 		return [ undefined, undefined ];
 	}

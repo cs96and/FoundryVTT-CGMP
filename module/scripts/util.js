@@ -12,6 +12,10 @@
  */
 
 export class Util {
+	static isV13() {
+		return !foundry.utils.isNewerVersion("13", game.version);
+	}
+
 	static isV12() {
 		return !foundry.utils.isNewerVersion("12", game.version);
 	}

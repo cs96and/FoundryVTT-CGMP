@@ -3,7 +3,7 @@
  * https://github.com/cs96and/FoundryVTT-CGMP
  *
  * Copyright (c) 2020 Shoyu Vanilla - All Rights Reserved.
- * Copyright (c) 2021-2024 Alan Davies - All Rights Reserved.
+ * Copyright (c) 2021-2025 Alan Davies - All Rights Reserved.
  *
  * You may use, distribute and modify this code under the terms of the MIT license.
  *

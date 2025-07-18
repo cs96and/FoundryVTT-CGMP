@@ -94,19 +94,21 @@ export class ChatResolver {
 	}
 
 	static onRenderChatMessage(chatMessage, html, messageData) {
+		const element = Util.isV13() ? html : html[0];
+
 		switch (messageData.message.flags?.cgmp?.subType) {
 			case ChatResolver.CHAT_MESSAGE_SUB_TYPES.AS:
-				html.addClass('cgmp-as');
+				element.classList.add('cgmp-as');
 				return;
 
 			case ChatResolver.CHAT_MESSAGE_SUB_TYPES.DESC:
-				html.addClass('cgmp-desc');
+				element.classList.add('cgmp-desc');
 				return;
 
 			default:
 				// Still handle the old way we identifed /desc messages, for older messages in the log.
 				if (ChatResolver.DESCRIPTION_SPEAKER_ALIAS === messageData.message.speaker.alias)
-					html.addClass('cgmp-desc');
+					element.classList.add('cgmp-desc');
 				break;
 		}
 	}

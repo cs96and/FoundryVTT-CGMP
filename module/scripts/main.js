@@ -43,7 +43,7 @@ class CautiousGamemastersPack {
 
 			Hooks.on('chatMessage', ChatResolver.onChatMessage);
 			Hooks.on('preCreateChatMessage', ChatResolver.onPreCreateChatMessage);
-			Hooks.on('renderChatMessage', ChatResolver.onRenderChatMessage);
+			Hooks.on(Util.isV13() ? 'renderChatMessageHTML' : 'renderChatMessage', ChatResolver.onRenderChatMessage);
 
 			const hideNpcDamage = CGMPSettings.getSetting(CGMP_OPTIONS.HIDE_NPC_DAMAGE_TEXT);
 			const hideNpcHealing = CGMPSettings.getSetting(CGMP_OPTIONS.HIDE_NPC_HEALING_TEXT);
@@ -58,7 +58,9 @@ class CautiousGamemastersPack {
 			if (Util.isV12() || CONFIG.Token.ringClass) {
 				const disableDynamicTokenRingFlash = CGMPSettings.getSetting(CGMP_OPTIONS.DISABLE_DYNAMIC_TOKEN_RING_FLASH);
 				if (game.modules.get('lib-wrapper')?.active && disableDynamicTokenRingFlash) {
-					const ringClass = Util.isV12() ? "foundry.canvas.tokens.TokenRing" : "CONFIG.Token.ringClass";
+					const ringClass = (Util.isV13() ? "foundry.canvas.placeables.tokens.TokenRing" :
+						(Util.isV12() ? "foundry.canvas.tokens.TokenRing" : "CONFIG.Token.ringClass"));
+
 					libWrapper.register('CautiousGamemastersPack', `${ringClass}.prototype.flashColor`, ()=>{}, "OVERRIDE");
 				}
 			}

@@ -181,7 +181,7 @@ export class ChatResolver {
 		const token = canvas.tokens.get(speaker.token);
 
 		if (token?.document?.hidden) {
-			if (Util.CHAT_MESSAGE_STYLES.IC !== message.type) {
+			if (Util.CHAT_MESSAGE_STYLES.IC !== Util.getMessageStyle(message)) {
 				// Whisper any non in-character messages.
 				message.updateSource({
 					whisper: ChatMessage.getWhisperRecipients("GM").map((user) => user.id)

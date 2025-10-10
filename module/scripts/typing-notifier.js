@@ -27,6 +27,7 @@ export class TypingNotifier {
 	static typingUsers = new Map();
 
 	constructor(chatLogApp, chatLogElement, allowPlayersToSeeTypingNotification) {
+		this._chatLogApp = chatLogApp;
 		this._lastPacketSent = null;
 		this._allowPlayersToSeeTypingNotification = allowPlayersToSeeTypingNotification;
 
@@ -145,7 +146,14 @@ export class TypingNotifier {
 	}
 
 	_setVisible(visible) {
+		// If the chat is at the bottom, sometimes the typing notification overlaps the bottom chat card.
+		// If it was previously at the bottom, force a scroll to the bottom after displaying the typing notification.
+		const isAtBottom = this._chatLogApp.isAtBottom;
+
 		this._notifyWrapperElement?.classList.toggle('hidden', !visible);
+
+		if (isAtBottom)
+			this._chatLogApp.scrollBottom();
 	}
 
 	_willDeleteLastChar(key, textArea) {

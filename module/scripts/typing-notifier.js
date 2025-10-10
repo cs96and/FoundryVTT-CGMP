@@ -230,12 +230,15 @@ export class TypingNotifier {
 export class TypingNotifierManager {
 	constructor(allowPlayersToSeeTypingNotification) {
 		this._allowPlayersToSeeTypingNotification = allowPlayersToSeeTypingNotification;
-		this._notifiers = [];
+		this._notifiers = new Map();
 
 		Hooks.on('renderChatLog', (chatLog, html, data) => {
 			const element = Util.isV13() ? html : html[0];
-			this._notifiers.push(new TypingNotifier(chatLog, element, this._allowPlayersToSeeTypingNotification));
-			console.log(this._notifiers);
+			this._notifiers.set(chatLog.id, new TypingNotifier(chatLog, element, this._allowPlayersToSeeTypingNotification));
+		});
+
+		Hooks.on('closeChatLog', (chatLog, ...args) => {
+			this._notifiers.delete(chatLog.id);
 		});
 
 		game.socket.on('module.CautiousGamemastersPack', this._onRemotePacket.bind(this));
@@ -247,7 +250,7 @@ export class TypingNotifierManager {
 	}
 
 	updateNotice() {
-		for (const notifier of Object.values(this._notifiers)) {
+		for (const notifier of this._notifiers.values()) {
 			notifier.updateNotice();
 		}
 	}

@@ -40,11 +40,6 @@ export class TypingNotifier {
 		this._notifyWrapperElement.innerHTML = '<span class="dots-cont"><span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span></span>';
 		this._notifyWrapperElement.appendChild(this._notifySpan);
 
-		// If Mobile Improvements is enabled, then we need to use a wrapper for ChatLog._onChatKeyDown(),
-		// as clicking the send button does not generate a keydown event.
-		if (game.modules.get("mobile-improvements")?.active && !chatLogApp._original)
-			libWrapper.register('CautiousGamemastersPack', 'ChatLog.prototype._onChatKeyDown', this._onChatKeyDownWrapper.bind(this), 'WRAPPER');
-
 		const chatFormElement = chatLogElement.querySelector(Util.isV13() ? ".chat-form" : "#chat-form");
 		chatFormElement.appendChild(this._notifyWrapperElement);
 
@@ -60,6 +55,11 @@ export class TypingNotifier {
 
 		this._chatBoxResizeObserver = new ResizeObserver(this._onChatBoxResize.bind(this));
 		this._chatBoxResizeObserver.observe(this._chatBox);
+
+		// If Mobile Improvements is enabled, then we need to use a wrapper for ChatLog._onChatKeyDown(),
+		// as clicking the send button does not generate a keydown event.
+		if (game.modules.get("mobile-improvements")?.active && !chatLogApp._original)
+			libWrapper.register('CautiousGamemastersPack', 'ChatLog.prototype._onChatKeyDown', this._onChatKeyDownWrapper.bind(this), 'WRAPPER');
 
 		this.updateNotice();
 	}
@@ -87,10 +87,6 @@ export class TypingNotifier {
 		document.body.removeChild(text);
 
 		return charWidth;
-	}
-
-	static _isV9() {
-		return !isNewerVersion("9", game.version ?? game.data.version);
 	}
 
 	_calcCharsPerLine() {

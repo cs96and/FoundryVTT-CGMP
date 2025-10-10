@@ -49,7 +49,7 @@ class CautiousGamemastersPack {
 			const hideNpcHealing = CGMPSettings.getSetting(CGMP_OPTIONS.HIDE_NPC_HEALING_TEXT);
 
 			if (!game.user.isGM && game.modules.get('lib-wrapper')?.active && (hideNpcDamage || hideNpcHealing)) {
-				CautiousGamemastersPack._scrollingTextRegex = new RegExp(`^[${hideNpcDamage ? "-" : ""}${hideNpcHealing ? "+" : ""}]\\d+$`);
+				CautiousGamemastersPack._scrollingTextRegex = new RegExp(`^[${hideNpcDamage ? "-\u2212" : ""}${hideNpcHealing ? "+" : ""}]\\d+$`);
 
 				libWrapper.register('CautiousGamemastersPack', 'InterfaceCanvasGroup.prototype.createScrollingText',
 					CautiousGamemastersPack._onScrollingText, "MIXED");
